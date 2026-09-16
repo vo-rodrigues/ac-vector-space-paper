@@ -13,9 +13,10 @@ Gabriel Fernandes · Renan Maneli Mezabarba · Vinicius de Oliveira Rodrigues
 ## About the manuscript
 
 This repository contains the LaTeX sources of *Existence of bases implies the axiom of choice, a foundation free proof*.
-We prove that, in Zermelo--Fraenkel set theory with the axiom of
-Foundation removed, the statement that every vector space has a basis implies the Axiom of Choice, concluding that the classical equivalence between $\AC$ and the existence of bases does not require the Axiom of Foundation.
-More specifically, we prove that if every vector space over a field of characteristic zero has a basis, then $\AC$ holds. This result extends to set theory with atoms.
+
+We prove that, in Zermelo–Fraenkel set theory with the axiom of
+Foundation removed, the statement that every vector space has a basis implies the Axiom of Choice, concluding that the classical equivalence between the Axiom of Choice and the existence of bases does not require the Axiom of Foundation.
+More specifically, we prove that if every vector space over a field of characteristic zero has a basis, then the Axiom of Choice holds. This result extends to set theory with atoms.
 
 ## Citation
 
