@@ -1,0 +1,342 @@
+\section{Elementary Galois theory}\label{sec:galois}
+
+In this section, we recall basic known facts on Galois theory for three purposes: to make this paper self-contained, as they will be used in the upcoming sections; to guarantee that the proofs of these facts do not require the Axiom of Choice; and to establish our notation.
+For undefined notions in field theory, we refer to \cite{Rotman1998}.
+
+We work solely in $\ZFm$ in this section.
+\vspace{1em}
+
+By $E/F$ we denote the fact that $E$ is a field extension of $F$.
+
+If $E/F$ is a field extension and $A\subseteq E$, then $F(A)$ denotes the smallest subfield of $E$ containing both $F$ and $A$.
+Similarly, if $\vec a=(a_1,\ldots,a_r)$ is a finite tuple of elements of $E$, then $F(\vec a)=F(\{a_1,\ldots,a_r\})$.
+An extension $E/F$ is simple if $E=F(a)$ for some $a\in E$.
+An extension $E/F$ is finitely generated if $E=F(\vec a)$ for some finite tuple $\vec a$ of elements of $E$.
+
+As usual, we say that $E/F$ is a finite extension if $E$ is a finite-dimensional vector space over $F$.
+In this case, the degree of a finite extension $E/F$ is the dimension of $E$ as an $F$-vector space, denoted $[E:F]$.
+Recall, from basic linear algebra, that the Axiom of Choice is not needed to define dimension in finite-dimensional vector spaces.
+
+If $E/F$ and $F/K$ are field extensions, assume that $\mathcal B$ is a basis of $E$ over $F$ and $\mathcal C$ is a basis of $F$ over $K$. Then the set $\{bc:b\in\mathcal B, c\in\mathcal C\}$ is a basis of $E$ over $K$ and the displayed elements are all distinct.
+In particular, if $E/F$ and $F/K$ are finite extensions, then $E/K$ is a finite extension and $[E:K]=[E:F][F:K]$.
+This last equality is known as the tower formula.
+
+Let $E/F$ be a field extension and let $a \in E$.
+We say that $a$ is \emph{algebraic} over $F$ if there exists a nonzero polynomial $p \in F[x]$ such that $p(a) = 0$.
+In that case, the minimal polynomial of $a$ over $F$ is the unique monic irreducible polynomial $p \in F[x]$ such that $p(a) = 0$.
+From basic field theory, it follows that $[F(a):F]=d$, where $d$ is the degree of $p$, and that $\{a^i:i<d\}$ is a basis of $F(a)$ over $F$.
+In particular, every element of $F(a)$ writes uniquely as $\sum_{i<d}c_i a^i$ for some $(c_i:i<d)\in F^d$.
+
+A field extension $E/F$ is \emph{algebraic} if every element of $E$ is algebraic over $F$.
+Every finite extension is algebraic.
+By induction and the tower formula, if $ E=F(a_1,\ldots,a_n)
+$ where  each $a_i$ is algebraic over $F$,
+then $E/F$ is a finite extension, and hence algebraic.
+
+Recall that an algebraic extension $E/F$ is:
+\begin{itemize}
+       \item \emph{normal} if every irreducible polynomial over
+$F$ that has a root in $E$ splits over $E$;
+       \item \emph{separable} if the minimal polynomial of every element of $E$ over $F$ has distinct roots.
+\end{itemize}
+
+Given a field $F$, we denote the ring of polynomials of $F$ in the variable $x$ by $F[x]$.
+
+
+For a field extension $E/F$, a field $K$, and a field embedding $\tau:F\to K$, we use the notation
+\[
+ \Emb_{\tau}(E,K)
+ =\{\sigma:E\hookrightarrow K:\sigma\text{ is a field embedding and }
+       \sigma|_F=\tau\}.
+\]
+In case $\tau$ is the inclusion map from $F$ to $K$, we write $\Emb_F(E,K)$.
+We call its elements $F$-embeddings of $E$ into $K$.
+
+The \emph{Galois group} of $E/F$ is $\Gal(E/F)=\{\sigma\in\Emb_F(E,E):\sigma\text{ is an automorphism}\}$, which is a group under composition.
+If $E/F$ is a finite extension, then $\Emb_F(E,E)=\Gal(E/F)$, since every injective $F$-linear map $E\to E$ is surjective.
+
+For a field embedding $\tau:K\to E$ and a polynomial
+$p=\sum_{i=0}^n a_i x^i\in K[x]$, write $\tau(p)=\sum_{i=0}^n\tau(a_i)x^i\in E[x]$.
+This induces an extension of $\tau$ to a ring homomorphism $\tau:K[x]\to E[x]$.
+
+\begin{lemma}\label{lem:simple-embeddings}
+Let $H=K(a)$ be a simple algebraic extension, let $E$ be a field,
+and let $\tau:K\to E$ be a field embedding.
+If $p\in K[x]$ is the monic minimal polynomial of $a$ over $K$,
+then the map from $\Emb_{\tau}(H,E)$ into $\{b\in E:\tau(p)(b)=0\}$ defined by
+\[
+ \sigma\longmapsto\sigma(a),
+\]
+is a bijection.
+\end{lemma}
+
+\begin{proof}
+If $\sigma\in\Emb_{\tau}(H,E)$, write
+$p=\sum_{i=0}^n c_i x^i$. Since $\sigma|_K=\tau$, we have
+$
+\tau(p)(\sigma(a))
+=\sum_{i=0}^n\tau(c_i)\sigma(a)^i
+=\sum_{i=0}^n\sigma(c_i)\sigma(a)^i
+=\sigma\left(\sum_{i=0}^n c_i a^i\right)
+=\sigma(p(a))=0.
+$
+Thus, the displayed map is well-defined.
+Write $f(\sigma)=\sigma(a)$, so $f:\Emb_{\tau}(H,E)\to\{b\in E:\tau(p)(b)=0\}$ is a function.
+
+Let $\mathrm{ev}_a:K[x]\to H$ be the evaluation map $q\mapsto q(a)$.
+It is a surjective ring homomorphism with kernel $(p)$, so it induces
+a unique isomorphism
+$\overline{\mathrm{ev}}_a:K[x]/(p)\to H$ such that
+$\overline{\mathrm{ev}}_a\circ\pi=\mathrm{ev}_a$, where
+$\pi:K[x]\to K[x]/(p)$ is the canonical projection.
+
+We will use $\overline{\mathrm{ev}}_a$ below to define an inverse mapping of $f$.
+
+Fix a root $b\in E$ of $\tau(p)$ and define the ring homomorphism
+$g_b:K[x]\to E$ by $g_b(q)=\tau(q)(b)$.
+The kernel of $g_b$ is $(p)$, which is maximal since $p$ is irreducible,
+and is proper since $g_b(1)=1\neq 0$. Thus $\ker g_b=(p)$, and there is
+a unique embedding $\bar g_b:K[x]/(p)\to E$ such that
+$\bar g_b\circ\pi=g_b$. Define
+\[
+ \sigma_b=\bar g_b\circ\overline{\mathrm{ev}}_a^{-1}:H\to E.
+\]
+Since $\bar g_b$ is an embedding and $\overline{\mathrm{ev}}_a^{-1}$ is
+an isomorphism, $\sigma_b$ is an embedding. Moreover, we have
+$\sigma_b\circ\mathrm{ev}_a=\bar g_b\circ\overline{\mathrm{ev}}_a^{-1}
+\circ\mathrm{ev}_a=\bar g_b\circ\overline{\mathrm{ev}}_a^{-1}
+\circ\overline{\mathrm{ev}}_a\circ\pi=\bar g_b\circ\pi=g_b$.
+Applying this identity to constant polynomials and to $x$ shows that
+$\sigma_b(a)=b$ and $\sigma_b|_K=\tau$, so $\sigma_b\in\Emb_{\tau}(H,E)$.
+Define $g:\{b\in E:\tau(p)(b)=0\}\to\Emb_{\tau}(H,E)$ by $g(b)=\sigma_b$.
+
+Now, notice that given $b \in \{b\in E:\tau(p)(b)=0\}$, we have $f(g(b))=f(\sigma_b)=\sigma_b(a)=b$.
+Conversely, given $\sigma \in \Emb_{\tau}(H,E)$, we have
+$g(f(\sigma))=g(\sigma(a))=\sigma_{\sigma(a)}$,
+since $\sigma_{\sigma(a)}$ and $\sigma$ are homomorphisms defined on $H=K(a)$ that agree on $K$ and $a$, it follows that $g(f(\sigma ))= \sigma_{\sigma(a)}=\sigma$.
+\end{proof}
+
+\begin{lemma}\label{lem:count-embeddings}
+Let $E/F$ be a finite normal separable extension, and let $\vec a$
+be a finite tuple of elements of $E$.
+Then $F(\vec a)/F$ is a finite extension and
+\[
+ |\Emb_F(F(\vec a),E)|=[F(\vec a):F].
+\]
+\end{lemma}
+
+\begin{proof}
+Write $\vec a=(a_1,\ldots,a_r)$ and $H=F(\vec a)$.
+We prove the assertion by induction on $r$.
+For $r=0$, we have $H=F$, so $\Emb_F(H,E)=\{\mathrm{id}_F\}$ and $[H:F]=[F:F]=1$, as desired.
+
+For the induction step, assume the assertion holds for tuples of length
+$r$. We show it holds for 
+tuples of length $r+1$.
+Put $K=F(a_1,\ldots,a_r)$ and $H=K(a_{r+1})$.
+By the induction hypothesis, $K/F$ is a finite extension, and $H/K$ is a finite extension since it is simple and algebraic.
+Thus, $H/F$ is a finite extension and $[H:F]=[K:F][H:K]$.
+Let $p$ be the minimal polynomial of $a_{r+1}$ over $K$.
+Then $d=[H:K]$ is the degree of $p$.
+
+Fix $\tau\in\Emb_F(K,E)$. The polynomial $p$ divides the
+minimal polynomial $q$ of $a_{r+1}$ over $F$. Thus, $\tau(p)\mid q$, since $\tau$ fixes $F$.
+By normality and separability, $q$ splits into distinct linear factors
+in $E$, so $\tau(p)$ has exactly $d$ roots in $E$.
+By Lemma~\ref{lem:simple-embeddings}, $|\Emb_{\tau}(H,E)|=d$.
+
+Consider the restriction map $\rho:\Emb_F(H,E)\to\Emb_F(K,E)$ defined by
+\[
+ \rho(\sigma)=\sigma|_K.
+\]
+For every $\tau\in\Emb_F(K,E)$, its fiber is
+$\rho^{-1}(\{\tau\})=\Emb_{\tau}(H,E)$ and therefore has $d$ elements.
+These fibers are pairwise disjoint and their union is $\Emb_F(H,E)$.
+By the induction hypothesis, $\Emb_F(K,E)$ has $[K:F]$ elements.
+Consequently,
+\[
+ |\Emb_F(H,E)|
+ =\sum_{\tau\in\Emb_F(K,E)}|\rho^{-1}(\{\tau\})|
+ =[K:F]d=[H:F].
+\]
+\end{proof}
+
+Notice that if $E/H$ and $H/F$ are field extensions and $E/F$ is a finite extension, then $E/H$ is a finite extension as well:
+every linearly independent set of $E$ over $H$ is also
+linearly independent over $F$, so it is finite, thus a
+linearly independent set of $E$ over $H$ of maximum length is a basis of $E$ over $H$.
+
+Again, if $E/H$ and $H/F$ are field extensions and $E/F$ normal, so is $E/H$: if $p\in H[x]$ is irreducible over $H$ and has a root in $E$, let $a \in E$ be such a root.
+Then $p$ generates the ideal $(p)$ of the polynomials in $H[x]$ that vanish at $a$.
+The minimal polynomial $q$ of $a$ over $F$ is irreducible over $F$ and has a root in $E$, so it splits into linear factors in $E$.
+Moreover, in $H[x]$, $q\in (p)$ as $q(a)=0$, so $p$ divides $q$ in $H[x]$.
+As $E[x]$ is a unique factorization domain, $p$ also splits into linear factors in $E$.
+
+Finally, if $E/H$ and $H/F$ are field extensions and $E/F$ separable, so is $E/H$: if $a \in E$, let $p$ be its minimal polynomial over $F$ and $q$ its minimal polynomial over $H$.
+As before, $q$ divides $p$ in $H[x]$, so $q$ is also separable.
+
+In the notation below, $\sigma(\vec a)=\sigma(a_1,\ldots,a_r)=(\sigma(a_1),\ldots,\sigma(a_r))$ whenever $\vec a=(a_1,\ldots,a_r)$ is a finite tuple of elements of $E$ and $\sigma$ is a field embedding of $E$ into some field.
+
+\begin{lemma}\label{lem:orbit}
+Let $E/F$ be a finite normal separable extension, and let $\vec a$
+be a finite tuple of elements of $E$. Then
+\[
+ [F(\vec a):F]
+ =\bigl|\{\sigma(\vec a):\sigma\in\Gal(E/F)\}\bigr|.
+\]
+\end{lemma}
+
+\begin{proof}
+Put $H=F(\vec a)$. The extension $E/H$ is finite, normal and
+separable.
+Fix a finite tuple $\vec e$ generating $E$ over $F$, which also generates
+$E$ over $H$. Applying Lemma~\ref{lem:count-embeddings} to $\vec e$ over
+$F$ gives $
+ |\Emb_F(E,E)|=|\Emb_F(F(\vec e),E)|=[F(\vec e):F]=[E:F]
+$. Likewise, applying the lemma to the finite normal separable extension
+$E/H$ and to $\vec e$ gives $
+|\Emb_H(E,E)|= |\Emb_H(H(\vec e),E)|=[H(\vec e):H]=[E:H]$. Using that embeddings of a finite extension into itself are
+automorphisms, we obtain
+\[
+ |\Gal(E/F)|=[E:F],\qquad |\Gal(E/H)|=[E:H].
+\]
+
+Put $G=\Gal(E/F)$ and $S=\Gal(E/H)$. For $\sigma,\tau\in G$,
+\[
+ \sigma(\vec a)=\tau(\vec a)
+ \iff \tau^{-1}\sigma\in S
+ \iff \sigma S=\tau S,
+\]
+Indeed, the first equivalence holds because $\tau^{-1}\sigma$ fixes
+every entry of $\vec a$ exactly when it fixes $H=F(\vec a)$; the second
+is the equality criterion for left cosets. Thus the map from the set of
+left cosets
+\[
+ \{\sigma S:\sigma\in G\}\longrightarrow\{\sigma(\vec a):\sigma\in G\},
+ \qquad \sigma S\longmapsto\sigma(\vec a),
+\]
+is well-defined and bijective.
+Each coset has $|S|$ elements, so finite counting and the tower
+formula give
+\[
+ \bigl|\{\sigma(\vec a):\sigma\in G\}\bigr|
+ =\frac{|G|}{|S|}
+ =\frac{[E:F]}{[E:H]}=[H:F].
+\]
+\end{proof}
+
+For a nonzero polynomial $p\in F[x]$, an extension $E/F$ is a
+\emph{splitting field} of $p$ over $F$ if $p$ splits into linear
+factors in $E[x]$ and $E=F(R)$, where $R=\{a\in E:p(a)=0\}$.
+
+
+\begin{lemma}\label{lem:splitting-normal}
+An extension $E/F$ is finite and normal if and only if it is a
+splitting field of a nonzero polynomial over $F$.
+\end{lemma}
+
+\begin{proof}
+Suppose first that $E/F$ is finite and normal. Take a finite
+$F$-basis $b_1,\ldots,b_n$ of $E$, and let $p_i\in F[x]$ be the
+minimal polynomial of $b_i$ over $F$. Each $p_i$ splits in $E$,
+so $p=\prod_{i=1}^n p_i$ splits in $E$. Let $R$ be the set of roots
+of $p$ in $E$.
+As $b_i\in R$ for each $i$, we have $E=F(R)$. Thus $E$ is a splitting
+field of $p$.
+
+Conversely, suppose $E$ is a splitting field of $p\in F[x]$.
+Its finite set of roots consists of algebraic elements, so $E/F$
+is finite. Let $q\in F[x]$ be monic irreducible with a root $a\in E$.
+There is a finite extension $M/E$ in which $q$ splits: successively
+adjoin a root of a nonconstant irreducible factor of the remaining
+polynomial, using the quotient by that factor, and divide out the
+resulting linear factor. Induction on the remaining degree terminates
+after at most $\deg q$ steps. This uses only finitely many choices.
+
+Fix a root $b\in M$ of $q$. By Lemma~\ref{lem:simple-embeddings}, applied
+with $\tau:F\to M$ the inclusion map,
+there exists an $F$-embedding $\tau_0:F(a)\to M$ sending $a$ to $b$.
+Write $K_0=F(a)$.
+
+List the roots of $p$ in $E$ as $u_1,\ldots,u_n$.
+They generate $E$ over $F$, and hence over $F(a)$.
+Put $K_j=F(a,u_1,\ldots,u_j)$ for $0\le j\le n$.
+We extend $\tau_0$ to an $F$-embedding $\tau_j:K_j\to M$ inductively.
+Given $\tau_j$ with $j<n$, let $m\in K_j[x]$ be the minimal
+polynomial of $u_{j+1}$ over $K_j$. Since $p(u_{j+1})=0$,
+we have $m\mid p$, and thus $\tau_j(m)\mid p$, since $\tau_j$ fixes $F$.
+The polynomial $p$ splits in $M[x]$, and $\tau_j(m)$ has the same
+positive degree as $m$. Hence $\tau_j(m)$ also splits in $M[x]$
+and has a root $v\in M$. Apply Lemma~\ref{lem:simple-embeddings} for
+$K_j$, $u_{j+1}$, $K_{j+1}=K_j(u_{j+1})$, $M$, and
+$\tau_j$. The minimal polynomial of $u_{j+1}$ over $K_j$ is $m$, and
+$v$ is a root of $\tau_j(m)$, so the lemma gives an embedding
+$\tau_{j+1}\in\Emb_{\tau_j}(K_{j+1},M)$ with
+$\tau_{j+1}(u_{j+1})=v$. In particular, $\tau_{j+1}$ extends $\tau_j$.
+Since $K_n=E$, this gives an $F$-embedding $\sigma=\tau_n:E\to M$
+with $\sigma(a)=\tau_{0}(a)=b$.
+
+Each $\sigma(u_i)$ is a root of $p$, and all roots of $p$ in $M$
+already lie in $E$, since $p$ splits in $E$.
+Hence $\sigma(E)\subseteq E$, and $b\in E$.
+Since $b$ was an arbitrary root of $q$ in $M$, the polynomial $q$
+splits in $E$. Thus $E/F$ is normal.
+\end{proof}
+
+Fix a normal separable algebraic extension $L/F$, and write
+\[
+ \Ecal(L,F)=\{E\in \mathcal P(L):F\subseteq E\subseteq L,
+       \ E/F\text{ is finite, normal and separable}\}.
+\]
+
+\begin{lemma}\label{lem:finite-subextensions}
+Let $L/F$ be a normal separable algebraic extension.
+The family $\Ecal(L,F)$ is closed under finite composita and
+\[
+ \bigcup\Ecal(L,F)=L.
+\]
+\end{lemma}
+
+\begin{proof}
+The empty compositum is $F$, which belongs to $\Ecal(L,F)$.
+For $E_1,\ldots,E_r\in\Ecal(L,F)$, let
+$E=F(E_1\cup\cdots\cup E_r)$ be their compositum inside $L$.
+By Lemma~\ref{lem:splitting-normal}, each $E_i$ is a splitting
+field of some nonzero $p_i\in F[x]$. The product $p_1\cdots p_r$
+splits in $E$, and its roots generate $E$.
+Thus $E$ is a splitting field of this product, so
+Lemma~\ref{lem:splitting-normal} shows that $E/F$ is finite and normal.
+It is separable because $E\subseteq L$ and $L/F$ is separable.
+Hence $E\in\Ecal(L,F)$.
+
+Now we show that $\bigcup\Ecal(L,F)=L$.
+Let $a\in L$, let $p\in F[x]$ be its minimal polynomial.
+Since $L/F$ is normal, $p$ splits in $L$.
+Put $R=\{b\in L:p(b)=0\}$. Then $F(R)$ is a splitting field
+of $p$, so $F(R)/F$ is finite and normal by
+Lemma~\ref{lem:splitting-normal} and $F(R)/F$ is separable as it is a subextension
+of $L/F$. Since $a\in F(R)\in\Ecal(L,F)$, every element of $L$
+belongs to a member of $\Ecal(L,F)$. The reverse inclusion is trivial.
+\end{proof}
+
+If $E/F$ is an algebraic field extension and $F$ has characteristic zero, then $E/F$ is separable.
+We give a direct proof for the normal case to make this paper self-contained.
+If $p(x)=\sum_{i=0}^n c_i x^i\in F[x]$ is a polynomial, its formal derivative is
+\[
+ p'(x)=\sum_{i=1}^n i c_i x^{i-1}\in F[x].
+\]
+The formal derivative is an $F$-linear map from $F[x]$ to itself, and it satisfies the Leibniz rule, $(pq)'=p'q+pq'$ for all $p,q\in F[x]$.
+
+\begin{lemma}\label{lem:normal-separable}
+Let $E/F$ be a normal algebraic extension, and assume that $F$ has characteristic zero. Then $E/F$ is separable.
+\end{lemma}
+\begin{proof}
+       Let $a\in E$ and let $p\in F[x]$ be its minimal polynomial over $F$. Since $E/F$ is normal, $p$ splits in $E$.
+       Write $p(x)=\prod_{i=1}^n (x-a_i)^{m_i}$, where $a_1,\ldots,a_n$ are distinct roots of $p$ in $E$ and $m_i\ge 1$ is the multiplicity of $a_i$.
+       If for some $j$ we have $m_j>1$, write $p(x)=(x-a_j)^{m_j}q(x)$, where $q(x)=\prod_{i\ne j}(x-a_i)^{m_i}$. By the Leibniz rule,
+       \[
+       p'(x)=m_j(x-a_j)^{m_j-1}q(x)+(x-a_j)^{m_j}q'(x).
+       \]
+       Hence $(x-a_j)^{m_j-1}$ divides $p'(x)$, and therefore $p'(a_j)=0$.
+       Since $m_j>1$ and $F$ has characteristic zero, $1\leq\deg p'=\deg p-1<\deg p$, contradicting the minimality of $p$.
+\end{proof}

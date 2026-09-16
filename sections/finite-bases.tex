@@ -1,0 +1,198 @@
+\section{Finite families of bases}\label{sec:finite}
+
+Given a field extension $L/F$, $E\in\Ecal(L,F)$, and an $F$-basis $B$ of $L$, the intersection $B\cap E$ is finite as it is a set of linearly independent elements of the finite-dimensional $F$-vector space $E$.
+In this context, we define:
+\[
+       q_{B,E}(x)=\prod_{b\in B\cap E}(x-b)\in E[x].
+\]
+In the notation above (and whenever needed), the empty product is defined to be $1$.
+
+Moreover, if $\Ccal$ is a finite nonempty collection of $F$-bases of $L$, we define
+\[
+ P_{\Ccal,E}(z,x)=\prod_{B\in\Ccal}\bigl(z-q_{B,E}(x)\bigr)\in E[z,x].
+\]
+
+\begin{lemma}\label{lem:basis-polynomials}
+Let $L/F$ be a normal separable algebraic extension, let
+$E\in\Ecal(L,F)$, and let $\Ccal$ be a finite nonempty collection
+of $F$-bases of $L$. Suppose that $P_{\Ccal,E}\in F[z,x]$.
+
+Then, for every $B\in\Ccal$ and every $\sigma\in\Gal(E/F)$,
+there exists $B'\in\Ccal$ such that
+\[
+ \sigma[B\cap E]=B'\cap E.
+\]
+\end{lemma}
+
+\begin{proof}
+Enumerate $\Ccal$ without repetitions as $(B_i)_{i<m}$.
+Suppose $P_{\Ccal,E}\in F[z,x]$, and fix $i<m$
+and $\sigma\in\Gal(E/F)$.
+Then $\sigma(P_{\Ccal,E})=P_{\Ccal,E}$.
+Since $q_{B_i,E}$ is a root of this polynomial in the variable $z$,
+$\sigma(q_{B_i,E})$ is a root of
+$\sigma(P_{\Ccal,E})=P_{\Ccal,E}$ in the variable $z$.
+Hence,
+\[
+ \prod_{j<m}
+       \bigl(\sigma(q_{B_i,E})-q_{B_j,E}\bigr)=0
+       \quad\text{in }E[x].
+\]
+As $E[x]$ is an integral domain, there exists $j<m$
+such that $\sigma(q_{B_i,E})=q_{B_j,E}$.
+The set of roots of $\sigma(q_{B_i,E})$ is
+$\sigma[B_i\cap E]$, and the set of roots of $q_{B_j,E}$
+is $B_j\cap E$.
+\end{proof}
+
+\begin{lemma}\label{lem:finite-bases}
+Let $L/F$ be a normal separable algebraic extension and let $\Ccal$
+be a finite nonempty family of $F$-bases of $L$. Suppose that, for every $E\in\Ecal(L,F)$,
+\begin{equation*}
+ P_{\Ccal,E}(z,x)\in F[z,x]
+\end{equation*}
+Then $L/F$ is finite.
+\end{lemma}
+
+\begin{proof}
+Let $m=|\Ccal|$ and fix $B_*\in\Ccal$.
+
+By Lemma~\ref{lem:basis-polynomials}, for every $E\in\Ecal(L,F)$ and
+$\sigma\in\Gal(E/F)$ there exists $B'\in\Ccal$ with
+$\sigma(B_*\cap E)=B'\cap E$.
+
+\begin{claim}\label{claim:coeff-degree}
+       For every $E_1,\ldots,E_r\in\Ecal(L,F)$, and every tuple $\vec a$ listing all the nonzero coefficients of the polynomials $q_{B_*,E_1},\ldots,q_{B_*,E_r}$, we have $[F(\vec a):F]\le m$.
+\end{claim}
+\begin{proof}[Proof of Claim]
+       Let $E=F(E_1\cup\dots\cup E_r)\in\Ecal(L,F)$.
+       Fix a tuple $\vec a$ as in the statement.
+
+       Suppose that $\sigma,\tau\in\Gal(E/F)$ satisfy
+       $\sigma[B_*\cap E]=\tau[B_*\cap E]$.
+       Since $E_i/F$ is normal for each $i$, we have
+       $\sigma(E_i)=\tau(E_i)=E_i$.
+       Thus, for every $1\le i\le r$,
+       \begin{align*}
+       \sigma[B_*\cap E_i]
+       &=\sigma[B_*\cap E\cap E_i]
+        =\sigma[B_*\cap E]\cap\sigma(E_i)\\
+       &=\sigma[B_*\cap E]\cap E_i
+        =\tau[B_*\cap E]\cap E_i\\
+       &=\tau[B_*\cap E]\cap\tau(E_i)
+        =\tau[B_*\cap E\cap E_i]\\
+       &=\tau[B_*\cap E_i].
+       \end{align*}
+       Therefore, for every $1\le i\le r$,
+       \[
+       \begin{aligned}
+       \sigma(q_{B_*,E_i})
+       &=\prod_{b\in B_*\cap E_i}(x-\sigma(b))
+        =\prod_{c\in\sigma[B_*\cap E_i]}(x-c)\\
+       &=\prod_{c\in\tau[B_*\cap E_i]}(x-c)
+        =\prod_{b\in B_*\cap E_i}(x-\tau(b))
+        =\tau(q_{B_*,E_i}).
+       \end{aligned}
+       \]
+       
+       Comparing coefficients, we see that $\sigma$ and $\tau$
+       agree on every entry of $\vec a$, so
+       $\sigma(\vec a)=\tau(\vec a)$.
+       Thus we may define $\ell:\{\sigma[B_*\cap E]:\sigma\in\Gal(E/F)\}\to\{\sigma(\vec a):\sigma\in\Gal(E/F)\}$ by
+       \[
+       \ell(\sigma[B_*\cap E])=\sigma(\vec a).
+       \]
+       By Lemma~\ref{lem:basis-polynomials}, $\dom \ell\subseteq\{B\cap E:B\in\Ccal\}$, which has cardinality at most $m$, and $\ell$ is onto.
+       Therefore, by Lemma~\ref{lem:orbit},
+       \[
+       [F(\vec a):F]
+       =|\{\sigma(\vec a):\sigma\in\Gal(E/F)\}|\leq|\{B\cap E:B\in\Ccal\}|\le m.\qedhere
+       \]
+\end{proof}
+
+Let $\coeff(q)$ denote the finite set of coefficients of a
+polynomial $q$, and define
+\begin{equation*}
+S=\bigcup_{E\in\Ecal(L,F)}\coeff(q_{B_*,E}),\qquad
+ D=F\left(S\right).
+\end{equation*}
+
+\begin{claim}\label{claim:D-degree} $[D:F]\le m$.
+\end{claim}
+\begin{proof}[Proof of Claim]
+Let $d_1,\ldots,d_{m+1}\in D=F(S)$.
+There exists a finite subset $S'\subseteq S$
+such that
+\[
+       d_1,\ldots,d_{m+1}\in F(S').
+\]
+
+Choose
+$E_1,\ldots,E_r\in\Ecal(L,F)$ so that $S'\subseteq\bigcup_{i=1}^r\coeff(q_{B_*,E_i})$.
+
+
+Let $\vec a$ be a tuple listing all the nonzero coefficients of the polynomials $q_{B_*,E_1},\ldots,q_{B_*,E_r}$.
+Then $d_1,\ldots,d_{m+1}\in F(S')\subseteq F(\vec a)$ (as $0 \in F$).
+As $[F(\vec a):F]\le m$ by Claim~\ref{claim:coeff-degree}, we conclude that $(d_1,\ldots,d_{m+1})$ is not $F$-linearly independent.
+
+As $(d_1,\ldots,d_{m+1})$ was an arbitrary tuple of $m+1$ elements of $D$, we conclude that $[D:F]\le m$.
+\end{proof}
+For each $b\in B_*$, let $\mu_b(x)\in D[x]$ be its monic minimal polynomial over $D$.
+\begin{claim}\label{claim:roots-in-L}
+       For every $b\in B_*$, all the roots of $\mu_b$ belong to $B_*$, and $\mu_b$ splits into distinct linear factors in $L[x]$.
+\end{claim}
+\begin{proof}[Proof of Claim]
+Fix $b$ and let $E\in\Ecal(L,F)$ be such that $b\in E$.
+By the definition of $D$,
+$q_{B_*,E}$ belongs to $D[x]$.
+As $q_{B_*,E}(b)=0$, it follows that $\mu_b(x)$ divides $q_{B_*,E}(x)$ in $D[x]$.
+This implies that every root of $\mu_b$ is a root of $q_{B_*,E}$, and hence belongs to $B_*$.
+
+Moreover, since $q_{B_*,E}$ splits into distinct linear factors in $L[x]$, so does $\mu_b$.
+\end{proof}
+
+Define in $B_*$ the equivalence relation $\sim$ given by
+\[
+ b\sim c\quad\Longleftrightarrow\quad\mu_b=\mu_c.
+\]
+For each $b\in B_*$, let $C_b$ be its equivalence class under $\sim$. We claim that
+\[
+ C_b=\{c\in L:\mu_b(c)=0\}.
+\]
+Indeed, if $c\in C_b$, then $\mu_c=\mu_b$, so $\mu_b(c)=0$.
+Conversely, if $\mu_b(c)=0$, then $c\in B_*$ by
+Claim~\ref{claim:roots-in-L}. Moreover, $\mu_c$ divides $\mu_b$, and
+since $\mu_b$ is irreducible and both polynomials are monic, we have
+$\mu_c=\mu_b$. Thus $c\in C_b$. In particular, every equivalence class
+is finite and nonempty.
+
+For each equivalence class $C$, define
+\[
+ S_C=\sum_{b\in C}b.
+\]
+We claim that $S_C\in D$. Indeed, fix $b\in C$.
+Since the roots of $\mu_b$ are precisely the elements of $C$, are
+distinct, and all have multiplicity one, Vi\`ete's formula shows that
+$-S_C$ is a coefficient of $\mu_b$.
+Hence $S_C\in D$.
+
+Now we claim that the family $(S_C: C \in B_*/\sim)$ is
+$F$-linearly independent.
+Indeed, let $(C_i: i<n)$ be a finite family of pairwise distinct equivalence classes, and let $(a_i: i<n)$ be a family of elements of $F$ such that
+\[
+ \sum_{i< n} a_i S_{C_i}=0.
+\]
+
+Then
+\[
+ 0=\sum_{i<n} a_i S_{C_i}
+  =\sum_{i<n} a_i\sum_{b\in C_i}b
+  =\sum_{i< n}\sum_{b\in C_i}a_ib.
+\]
+Since the classes are pairwise disjoint and subsets of the $F$-basis $B_*$, each $a_i$ must be zero.
+
+Finally, by Claim~\ref{claim:D-degree}, an $F$-linearly independent family in
+$D$ has at most $m$ elements. Hence there are at most $m$ equivalence
+classes. Each class is finite, so their union $B_*$ is finite. Since
+$B_*$ is an $F$-basis of $L$, the extension $L/F$ has finite degree.
+\end{proof}

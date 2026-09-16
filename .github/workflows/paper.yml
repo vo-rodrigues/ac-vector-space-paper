@@ -1,0 +1,122 @@
+name: Build and publish PDF
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+# Keep the entire build/deploy/cleanup sequence serialized. Never interrupt
+# a deployment or cleanup when a newer push arrives.
+concurrency:
+  group: paper-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - name: Check out manuscript
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+
+      - name: Test publication safeguards
+        run: node --test .github/tests/pages.test.cjs
+
+      - name: Install TeX tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y \
+            latexmk biber texlive-latex-base texlive-latex-recommended \
+            texlive-latex-extra texlive-bibtex-extra texlive-fonts-recommended \
+            lmodern
+
+      - name: Compile only public sources
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/manuscript" "$RUNNER_TEMP/latex-build" "$RUNNER_TEMP/paper-site"
+          cp acpaper.tex "$RUNNER_TEMP/manuscript/"
+          cp -R includes sections "$RUNNER_TEMP/manuscript/"
+          cd "$RUNNER_TEMP/manuscript"
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
+            -outdir="$RUNNER_TEMP/latex-build" acpaper.tex
+          test -s "$RUNNER_TEMP/latex-build/acpaper.pdf"
+          test -s "$RUNNER_TEMP/latex-build/acpaper.bbl"
+          if grep -Ei 'undefined references|undefined citations|Citation .* undefined|Reference .* undefined|Please \(re\)run Biber|Please rerun LaTeX' \
+            "$RUNNER_TEMP/latex-build/acpaper.log"; then
+            echo '::error::The manuscript has unresolved references or needs another bibliography pass.'
+            exit 1
+          fi
+          cp "$RUNNER_TEMP/latex-build/acpaper.pdf" "$RUNNER_TEMP/paper-site/acpaper.pdf"
+
+      - name: Upload temporary Pages artifact
+        if: github.event.repository.private == false
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          name: acpaper-pages
+          path: ${{ runner.temp }}/paper-site
+          retention-days: 1
+
+  publish:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}acpaper.pdf
+    outputs:
+      published: ${{ steps.deployment.outcome == 'success' }}
+    steps:
+      - name: Check out publication safeguards
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+          sparse-checkout: .github/scripts
+
+      - name: Skip superseded commits
+        id: current
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          script: |
+            const { isCurrent } = require('./.github/scripts/pages.cjs');
+            core.setOutput('current', await isCurrent({ github, context, core }));
+
+      - name: Replace published PDF
+        id: deployment
+        if: steps.current.outputs.current == 'true'
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+        with:
+          artifact_name: acpaper-pages
+
+  cleanup:
+    needs: publish
+    if: needs.publish.outputs.published == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Check out artifact cleanup
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+          sparse-checkout: .github/scripts
+
+      - name: Delete this workflow's temporary PDF artifacts
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          script: |
+            const { cleanup } = require('./.github/scripts/pages.cjs');
+            await cleanup({ github, context, core });

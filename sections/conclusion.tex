@@ -1,0 +1,69 @@
+\section{Concluding remarks}\label{sec:conclusion}
+
+Theorem~\ref{thm:main} shows that Foundation is unnecessary for the
+equivalence between the existence of vector space bases and $\AC$,
+settling the questions that appear in
+\cites[p.~33]{Blass}{Karagila2017MO}[p.~423]{Morillon}[p.~121]{Philip2025}.
+
+Blass~\cite[p.~33]{Blass} also asked whether, without Foundation, $\AC$
+follows from the assertion that every linearly independent set in a
+vector space can be extended to a basis. The following corollary
+answers this affirmatively and also includes the assertion that every
+spanning subset of a vector space contains a basis of that space,
+studied by Halpern~\cite{Halpern1966}.
+
+\begin{corollary}\label{cor:basis-principles}
+In $\ZFm$, the following statements are equivalent:
+\begin{enumerate}
+\item $\AC$;
+\item every vector space has a basis;
+\item every vector space over a field of characteristic zero has a basis;
+\item every linearly independent subset of a vector space is contained
+in a basis of that space;
+\item every spanning subset of a vector space contains a basis of
+that space.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+Assume $(1)$. Given a linearly independent subset $I$ of a vector
+space $V$, Zorn's lemma yields a maximal linearly independent subset
+of $V$ containing $I$. Such a subset spans $V$ and is therefore a
+basis, proving $(4)$. Similarly, given a spanning subset $S$ of $V$,
+Zorn's lemma yields a maximal linearly independent subset $B$ of $S$.
+Maximality implies that $S$ is contained in the span of $B$, so $B$
+is a basis of $V$, proving $(5)$. These applications of Zorn's lemma
+do not require Foundation.
+
+Taking $I=\varnothing$ in $(4)$ gives $(2)$, as does taking $S=V$
+in $(5)$. Clearly, $(2)$ implies $(3)$. Finally, $(3)$ implies that
+every vector space over a field of characteristic zero
+has a basis, so Theorem~\ref{thm:main} gives $(1)$.
+\end{proof}
+
+The argument also works in $\mathsf{ZFA}$, the set theory with atoms.
+Indeed, Blass's implication and L\'evy's partition lemma hold in that
+setting. In Proposition~\ref{prop:embedding}, the elements of $X$
+serve only as indices for indeterminates, so the construction applies
+to sets containing atoms. The subsequent arguments use finite
+field extensions, sets of bases and subfields, and recursion on an
+ordinal bounded by a Hartogs number, and all these constructions are
+available in $\mathsf{ZFA}$.
+Thus Theorem~\ref{thm:main} and
+Corollary~\ref{cor:basis-principles} hold there as well.
+
+Halbeisen~\cite[Note~94]{Halbeisen2012} asks whether, in $\mathsf{ZFA}$,
+$\AC$ follows from the assertion that every vector space has a basis,
+or at least from the stronger assertion that every linearly independent
+subset of a vector space extends to a basis of that space. Our results
+answer both questions affirmatively.
+
+\subsection*{Acknowledgements}
+This study was financed, in part, by the S\~ao Paulo Research Foundation
+(FAPESP), Brasil. Process Numbers \#25/07302-0 and \#25/09425-1.
+
+\subsection*{Declaration of AI assistance}
+OpenAI's Codex, using the GPT-6 Astra model,
+was used to generate novel mathematical content and assist with the writing process.
+The assistance also included grammatical suggestions and bibliographical references.
+All the output and suggestions were reviewed, edited and/or rewritten by the authors.

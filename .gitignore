@@ -1,0 +1,78 @@
+# LaTeX auxiliary and build files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.glo
+*.gls
+*.glg
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+*.dvi
+*.ps
+*.tmp
+*.temp
+*.thm
+
+# Bibliography processor cache
+*.bbl
+*.blg
+*-blx.bib
+*-blx.aux
+
+# latexmk and TeX build folders
+_minted*/
+_build/
+build/
+dist/
+out/
+output/
+outputs/
+latex.out/
+texput.log
+
+# Temporary lock files created by TeX editors and PDF viewers
+*.busy
+*(busy)
+*.lck
+*.lock
+*.pdfsync
+
+# Generated PDFs (remove this rule if a PDF is intentionally versioned)
+*.pdf
+
+# Operating-system and file-manager metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor and IDE state
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

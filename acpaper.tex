@@ -1,0 +1,91 @@
+\documentclass[11pt,a4paper]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,mathtools,mathrsfs}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\input{includes/bibliography}
+\hypersetup{
+  pdftitle={Eliminating Foundation from the equivalence between the existence of bases and the axiom of choice},
+  pdfsubject={Axiom of choice and vector space bases in ZF without Foundation},
+  pdfkeywords={Axiom of choice, axiom of foundation, axiom of multiple choice,
+    vector space bases, normal field extensions}
+}
+
+\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks[1]
+
+\newcommand{\ZF}{\mathsf{ZF}}
+\newcommand{\AC}{\mathsf{AC}}
+\newcommand{\MC}{\mathsf{MC}}
+\newcommand{\ZFm}{\mathsf{ZF}^{-}}
+\newcommand{\Pow}{\mathcal P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Ecal}{\mathcal E}
+\newcommand{\Ccal}{\mathcal C}
+\newcommand{\Lcal}{\mathcal L}
+\newcommand{\Var}{\mathsf{Var}}
+\newcommand{\Symbols}{\mathsf{Symbols}}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Emb}{Emb}
+\DeclareMathOperator{\Bas}{Bas}
+\DeclareMathOperator{\coeff}{coeff}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\spanlin}{span}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{claim}{Claim}[theorem]
+
+\title[Vector space bases without Foundation]
+{Eliminating Foundation from the equivalence between the existence of bases and the axiom of choice}
+
+\author{Gabriel Fernandes}
+\address{Department of Mathematics, Institute of Mathematics and Computer
+Sciences, University of S\~ao Paulo, S\~ao Carlos, SP, Brazil}
+\email{fernandes@icmc.usp.br}
+
+\author{Renan Maneli Mezabarba}
+\address{Department of Exact Sciences, State University of Santa Cruz,
+Ilh\'eus, BA, Brazil}
+\email{rmmezabarba@uesc.br}
+
+\author{Vinicius de Oliveira Rodrigues}
+\address{Department of Mathematics, Institute of Mathematics, Statistics and
+Computer Science, University of S\~ao Paulo, S\~ao Paulo, SP, Brazil}
+\email{vinior@ime.usp.br}
+
+\date{}
+\subjclass[2020]{Primary 03E25; Secondary 03E30, 12F10, 15A03}
+\keywords{Axiom of choice, axiom of foundation, axiom of multiple choice,
+vector space bases, normal field extensions}
+
+\begin{document}
+
+\begin{abstract}
+We prove that, in Zermelo--Fraenkel set theory with the axiom of
+Foundation removed, the statement that every vector space has a basis implies the Axiom of Choice, concluding that the classical equivalence between $\AC$ and the existence of bases does not require the Axiom of Foundation.
+More specifically, we prove that if every vector space over a field of characteristic zero has a basis, then $\AC$ holds. This result extends to set theory with atoms.
+\end{abstract}
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/preliminaries}
+\input{sections/galois-theory}
+\input{sections/finite-bases}
+\input{sections/algebraic-extension}
+\input{sections/main-theorem}
+\input{sections/conclusion}
+\printbibliography
+
+\end{document}

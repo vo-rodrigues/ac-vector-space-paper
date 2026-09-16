@@ -1,0 +1,98 @@
+\section{Introduction}
+
+One of the early consequences of the Axiom of Choice $\AC$ was the
+existence of bases for vector spaces. In 1905, shortly after Zermelo's
+proof of the well-ordering theorem~\cite{Zermelo1904}, Hamel constructed
+a basis of $\mathbb R$ over $\mathbb Q$ and used it to obtain
+discontinuous solutions of the functional equation
+$f(x+y)=f(x)+f(y)$~\cite{Hamel1905}.
+Hausdorff's treatment of abstract real linear spaces in
+1932 included the existence of bases~\cite[p.~295]{Hausdorff1932}.
+For vector spaces over arbitrary fields, one of the earliest
+recorded proofs, due to Zorn, appears in 1935~\cite{Zorn1935} in his
+treatment of what is modernly known as Zorn's lemma.
+
+Whether the existence of bases really depended on the
+Axiom of Choice or whether it could be proved in the Zermelo--Fraenkel set theory $\ZF$ became a more complicated question.
+In 1962, L\"auchli~\cite{Lauchli1962} constructed permutation models with self-singletons $x=\{x\}$ containing a vector space with no basis, and others
+containing a vector space with bases of different cardinalities.
+However, in these models, both the Axiom of Choice and
+the Axiom of Foundation fail.
+This established the independence of the existence of bases from
+$\ZFm$, the Zermelo--Fraenkel set theory with the Axiom of Foundation omitted.
+
+Later, Bleicher~\cite{Bleicher1964} derived the axiom of multiple
+choice $\MC$ from the assertion that every linearly independent set extends
+to a basis.
+In $\ZF$, $\MC$ is equivalent to $\AC$~\cite{FelgnerJech1973}.
+Foundation is essential for this equivalence: L\'evy's permutation-model
+construction establishes the relative consistency of $\MC+\neg\AC$
+with $\ZFm$~\cite{Levy1962}. Later Halpern~\cite{Halpern1966} proved in $\ZFm$
+that $\AC$ follows if every generating
+set of every vector space contains a basis.
+
+Finally, Blass settled the converse in $\ZF$ in 1984~\cite{Blass}.
+He derived $\MC$ from the existence of bases in $\ZFm$.
+Thus, in $\ZF$, the existence of bases is equivalent to $\AC$.
+
+\begin{theorem}[Blass {\cite{Blass}}]\label{thm:blass}
+In $\ZFm$, if every vector space over a field of characteristic zero has a basis, then $\MC$ holds.
+Thus,
+\[
+    \ZF\vdash \text{``every vector space has a basis''} \leftrightarrow \AC.
+\]
+\end{theorem}
+
+The restriction to fields of characteristic zero is not stated in Blass's article, but it follows from the presented proof.
+
+However, the question whether the existence of bases implies $\AC$ in
+$\ZFm$ remained open~\cites[p.~33]{Blass}{Karagila2017MO}[p.~423]{Morillon}[p.~121]{Philip2025}.
+
+The apparent role of Foundation in this problem is particularly striking.
+Jech writes that this axiom is ``irrelevant for the development of ordinal
+and cardinal numbers, natural and real numbers, and in fact of all ordinary
+mathematics'' while emphasizing its usefulness in the metamathematics
+of set theory~\cite[Chapter~6, p.~63]{Jech2003}.
+Kunen writes: ``The Axiom of Foundation is, as always in mathematics,
+totally irrelevant''~\cite[p.~47]{Kunen1980}.
+Similar remarks appear in
+\cites[Chapter~III, \S4, p.~101]{Kunen1980}[\S I.14]{Kunen2009}[p.~87]{FraenkelBarHillelLevy1973}.
+Nevertheless, Foundation is essential to the implication
+$\MC\Rightarrow\AC$ used in Blass's proof.
+Determining whether Foundation can be eliminated from the equivalence
+between the existence of bases and $\AC$ therefore clarifies whether this axiom
+plays an essential role in the proof or whether the existence
+of bases alone suffices.
+
+In this paper we settle this question by showing that the existence
+of bases is enough to derive $\AC$.
+\begin{theorem}\label{thm:main}
+In $\ZFm$, assume that every vector space over a field of characteristic
+zero has a basis. Then $\AC$ holds.
+Thus, in $\ZFm$, the following are equivalent:
+\begin{enumerate}
+    \item $\AC$;
+    \item every vector space has a basis.
+    \item every vector space over a field of characteristic zero has a basis.
+\end{enumerate}
+\end{theorem}
+
+This paper is organized as follows.
+
+In Section~\ref{sec:preliminaries}, we fix set-theoretic notation and recall some
+elementary set-theoretic facts.
+
+In Section~\ref{sec:galois}, we review some basic field extension theory
+that will be used in the proof of Theorem~\ref{thm:main}.
+All the statements in this section are standard and are reviewed
+for the reader's convenience, to fix notation and to ensure that
+the proofs do not require Foundation or Choice, although the proofs are standard.
+
+In Section~\ref{sec:finite}, we prove Lemma~\ref{lem:finite-bases}, a criterion for the finiteness of a normal separable algebraic extension in terms of polynomial coefficients associated
+to finite collections of bases and intermediate finite dimensional extensions.
+
+In Section~\ref{sec:extension}, we use Lemma~\ref{lem:finite-bases} to prove Theorem~\ref{thm:algebraic}, which shows that, assuming $\MC$ and given a field extension $L/K$ that is normal, separable and algebraic, if certain intermediate extensions of $L/K$ have bases and if $K$ is well-orderable, then this well-ordering can be extended to a well-ordering of $L$.
+
+In Section~\ref{sec:main-proof}, we prove Theorem~\ref{thm:main} by showing that every set can be embedded into an algebraic, normal and separable extension of a well-orderable field of characteristic zero and then applying Theorem~\ref{thm:algebraic} to well-order this extension.
+
+Finally, in Section~\ref{sec:conclusion}, we discuss some consequences of Theorem~\ref{thm:main} and make final remarks.

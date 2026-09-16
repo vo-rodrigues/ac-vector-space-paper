@@ -1,0 +1,29 @@
+\section{Set-theoretic preliminaries}\label{sec:preliminaries}
+
+For undefined set-theoretic notions, we refer the reader to \cite{Kunen2009} and \cite{Kunen2011}.
+
+The Axiom of Multiple Choice $\MC$ is the statement that
+for every family of nonempty sets $(A_i)_{i\in I}$ there exists
+a function $f$ whose domain is $I$ such that for every $i\in I$,
+$f(i)$ is a nonempty finite subset of $A_i$.
+
+For a set $Y$, let $h(Y)$ denote the Hartogs number
+of $Y$, that is, the least
+ordinal that does not inject into $Y$. Hartogs's theorem says that such a
+number exists (see, e.g., \cite[\S I.11]{Kunen2009}).
+
+We shall use that a finite union of finite sets is finite and that
+choice functions for finite collections of nonempty sets exist in $\ZFm$.
+
+The following is known as L\'evy's lemma \cite{Levy1962}.
+See also
+\cite[Lemma~1, p.~105]{Tachtsis2019}.
+
+\begin{lemma}[L\'evy]\label{lem:partition}
+In $\ZFm$, $\MC$ is equivalent to the statement that
+every set has a partition into finite nonempty sets
+indexed by an ordinal.
+
+That is, for every set $X$ there exists an ordinal $\alpha$ and a family $(X_\beta)_{\beta<\alpha}$ of nonempty finite subsets of $X$ such that for every two distinct $\beta,\gamma<\alpha$, $X_\beta\cap X_\gamma=\varnothing$ and $\bigcup_{\beta<\alpha}X_\beta=X$.
+\end{lemma}
+

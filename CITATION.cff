@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "Please cite the manuscript using the preferred citation below."
+title: "Eliminating Foundation from the equivalence between the existence of bases and the axiom of choice"
+authors:
+  - family-names: Fernandes
+    given-names: Gabriel
+  - family-names: Mezabarba
+    given-names: Renan Maneli
+  - family-names: Rodrigues
+    given-names: Vinicius de Oliveira
+license: CC-BY-4.0
+url: "https://github.com/vo-rodrigues/ac-vector-space-paper"
+repository-code: "https://github.com/vo-rodrigues/ac-vector-space-paper"
+preferred-citation:
+  type: unpublished
+  title: "Eliminating Foundation from the equivalence between the existence of bases and the axiom of choice"
+  authors:
+    - family-names: Fernandes
+      given-names: Gabriel
+    - family-names: Mezabarba
+      given-names: Renan Maneli
+    - family-names: Rodrigues
+      given-names: Vinicius de Oliveira
+  year: 2026
+  url: "https://github.com/vo-rodrigues/ac-vector-space-paper"
+  notes: "Preliminary manuscript; arXiv submission pending."
+  # ARXIV_ID: pending. Once assigned, use https://arxiv.org/abs/ARXIV_ID
+  # as the preferred-citation URL and update README.md.

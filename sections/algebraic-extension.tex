@@ -1,0 +1,278 @@
+\section{Well-ordering an algebraic extension}\label{sec:extension}
+
+In this section, we work in $\ZFm$, besides in Theorem~\ref{thm:algebraic}, where we also assume $\MC$.
+
+The main goal of this section is to prove Theorem~\ref{thm:algebraic}, which shows that, assuming $\MC$ and given a field extension $L/K$ that is normal, separable and algebraic, if certain intermediate extensions of $L/K$ have bases and if $K$ is well-orderable, then this well-ordering can be extended to a well-ordering of $L$.
+The idea of the proof is to recursively define a well-ordering of an increasing chain of subfields of $L$ starting with $K$ and ending with $L$.
+The ideas are somewhat adapted from the standard well-ordering of the constructible universe $\mathbf L$ (see, e.g., \cite[Definitions~II.6.18 and~II.6.19 and Theorem~II.6.20]{Kunen2011}).
+
+We use basic first-order logic internalized within $\ZFm$.
+Formally, it is constructed using Polish notation, so no parentheses are needed.
+The definition and basic development of internalized first-order logic and the satisfaction relation do not depend on the Axiom of Foundation or the Axiom of Choice.
+We refer the reader to \cite[\S\S II.4--II.8]{Kunen2009} for details.
+
+By $\Var$, we denote a countably infinite set of variables fixed in advance.
+
+Let $\Symbols$ denote the set $\Var\cup\{0,1,+,-,\cdot\}\cup\{=,\land, \vee, \rightarrow, \leftrightarrow, \neg, \exists, \forall\}$.
+Fix once and for all an order $<_S$ of type $\omega$ of the set $\Symbols$.
+
+Consider the first-order language of field theory with constants in $D$, $\Lcal_D=\{0,1,+,-,\cdot\}\cup D$, where $D$ is a set of constant symbols disjoint from $\Symbols$.
+For this to hold in the future, we can assume that $\Symbols$ has no pairs, triples or natural numbers (for example, code the symbols by distinct $4$-tuples of natural numbers).
+
+The set of all $\Lcal_D$-formulas is countable in $\ZFm$ when $D$ is countable.
+
+If $\varphi$ is an $\Lcal_D$-formula and $k \in \omega$, an enumeration of the free variables of $\varphi$ in $k$ parameters is a nonempty finite sequence $\vec v=(v_0,\ldots,v_k)$ of distinct variables in $\Var$ for which the set of free variables of $\varphi$ is contained in $\{v_0,\ldots,v_{k}\}$.
+Notice that the length of $\vec v$ is $k+1$, not $k$.
+That is happening on purpose: $v_0$ is a variable that will not be thought of as a parameter, as will hopefully be clear in the sequel.
+
+An $\Lcal_D$ \emph{formula with $k$ parameters} is a pair $(\varphi,\vec v)$ consisting of an $\Lcal_D$-formula $\varphi$ and an enumeration of the free variables of $\varphi$ in $k$ parameters. We denote it by $\varphi(\vec v)$.
+
+Fix once and for all a well-ordering $<_{\Var}$ of type $\omega$ of
+$\Var^{<\omega}$.
+
+Let $D$ be disjoint from $\Symbols$, and let $<_D$ be a
+well-ordering of $D$. Define $<'_D$ on $D\cup\Symbols$ by
+\[
+ <'_D=<_S\cup \{(d,s):d\in D, s\in \Symbols\}\cup <_D.
+\]
+For $s,t\in(\Symbols \cup D)^{<\omega}$, define
+\[
+ s<^*_D t\iff |s|<|t|\ \text{or}\
+ \bigl(|s|=|t|\ \text{and}\ s<^{|s|}_{D}t\bigr),
+\]
+where $<^{n}_D$ is the lexicographic order on $(\Symbols \cup D)^{n}$ induced by $<'_D$.
+For $\mathcal L_D$-formulas with parameters
+$(\varphi,\vec v)$ and $(\psi,\vec w)$, define
+\[
+ (\varphi,\vec v)\mathrel{\lhd_D}(\psi,\vec w)
+ \quad\Longleftrightarrow\quad
+ \varphi<^*_D\psi
+ \quad\text{or}\quad
+ \bigl(\varphi=\psi\ \text{and}\ \vec v<_{\Var}\vec w\bigr).
+\]
+
+\begin{lemma}
+The relation $\lhd_D$ is a well-ordering of the set of all
+$\mathcal L_D$-formulas with parameters.
+\end{lemma}
+\begin{proof}
+The order $<'_D$ is a well-ordering of $D\cup\Symbols$. Hence,
+for every $n\in\omega$, the lexicographic order $<^n_D$ is a
+well-ordering of $(D\cup\Symbols)^n$. Comparing first by length and
+then lexicographically therefore makes $<^*_D$ a well-ordering
+of $(D\cup\Symbols)^{<\omega}$. Its restriction to the set of all
+$\mathcal L_D$-formulas is consequently a well-ordering.
+
+Finally, $\lhd_D$ is the lexicographic order induced by the
+well-orderings $<^*_D$ and $<_{\Var}$. Its restriction to the set of
+$\mathcal L_D$-formulas with parameters is therefore a
+well-ordering.
+\end{proof}
+
+Let $E$ be an $\Lcal_D$-structure, and let $\varphi(\vec v)$ be a
+formula with $k$ parameters. For $a\in E$ and
+$\vec b=(b_i)_{i<k}\in E^k$, we write $E\models\varphi(a,\vec b)$ if $E\models\varphi[\sigma]$, where $\sigma:\Var\to E$ is a variable assignment such that $\sigma(v_0)=a$ and $\sigma(v_{i+1})=b_i$ for every $i<k$.
+
+\begin{definition}\label{def:formula-order}
+An \emph{extension tuple} is a tuple $T=(L,F,\prec,D,<_D,\mathbf u)$ such that:
+\begin{itemize}
+    \item $L/F$ is a field extension,
+    \item $\prec$ is a well-ordering of $F$,
+    \item $D$ is a set disjoint from $\Symbols$,
+    \item $\mathbf u=(u_d)_{d\in D}$ is a family in $L$,
+    \item $<_D$ is a well-ordering of $D$.
+\end{itemize}
+In the notation above, we define:
+\begin{enumerate}
+    \item $E_T=F(u_d:d\in D)$, where $E_T$ is regarded as an $\Lcal_D$-structure with the interpretation of each $d\in D$ being $u_d$.
+    \item For each $k\in\omega$, let $\prec_{\mathrm{lex}}^k$ be the
+    lexicographic well-ordering of $F^k$ induced by $\prec$. Define
+    $\sqsubset_T$ on the pairs $(\varphi(\vec v),\vec b)$, where
+    $\varphi(\vec v)$ is an $\Lcal_D$-formula with $k$ parameters and
+    $\vec b\in F^k$, by
+    \[
+    \begin{aligned}
+    (\varphi(\vec v),\vec b)\mathrel{\sqsubset_T}
+    (\psi(\vec w),\vec c)
+    \quad\Longleftrightarrow\quad&
+    \varphi(\vec v)\mathrel{\lhd_D}\psi(\vec w)\\
+    &\text{or}\quad
+    \bigl(\varphi(\vec v)=\psi(\vec w)
+    \ \text{and}\ \vec b\mathrel{\prec_{\mathrm{lex}}^k}\vec c\bigr).
+    \end{aligned}
+    \]
+    In the second clause, equality of the first coordinates ensures
+    that both tuples belong to the same $F^k$. Thus $\sqsubset_T$ is
+    the lexicographic well-ordering obtained by first comparing the
+    formulas with parameters and then their corresponding tuples from
+    $F^k$.
+\end{enumerate}
+
+Such a pair $(\varphi(\vec v),\vec b)$ is said to \emph{describe}
+$x\in E_T$ if
+\[
+ \{a\in E_T:E_T\models\varphi(a,\vec b)\}=\{x\}.
+\]
+Every $c\in E_T$ admits such
+a description as every element of $F(\mathbf u)$ satisfies the relation
+\[
+    c\cdot \sum_{i \in I} b_i\prod_{j \in J_i} u_j^{m_{i,j}} = \sum_{i \in I} b_i'\prod_{j \in J_i} u_j^{m_{i,j}}
+\]
+for some finite set $I$, some finite subsets $J_i$ of $D$ for each $i \in I$, exponents $m_{i,j}\in\omega$ for $i\in I$ and $j\in J_i$, and $b_i,b_i' \in F$ for each $i \in I$ with $\sum_{i \in I} b_i\prod_{j \in J_i} u_j^{m_{i,j}}\neq 0$.
+In this case, this relation determines $c$.
+
+For $x\in E_T$, put
+\[
+ c_T(x)=\min_{\sqsubset_T}
+       \{(\varphi(\vec v),\vec b):
+              (\varphi(\vec v),\vec b)\text{ describes }x\}.
+\]
+Define a relation $\prec_T^+$ on $E_T$ by
+\begin{equation}
+ x\prec_T^+y\ \Longleftrightarrow\quad
+ \begin{aligned}[t]
+ &(x,y\in F\ \text{and}\ x\prec y)\\
+ &\quad\text{or}\ (x\in F\ \text{and}\ y\in E_T\setminus F)\\
+ &\quad\text{or}\ (x,y\in E_T\setminus F\ \text{and}\ c_T(x)\sqsubset_T c_T(y)).
+ \end{aligned}
+\end{equation}
+\end{definition}
+
+The following is straightforward from the previous definition and left to the reader.
+
+\begin{lemma}\label{lem:orderExtension}
+Let $T=(L,F,\prec,D,<_D,\mathbf u)$ be an extension tuple.
+Then $(E_T,\prec_T^+)$ is a well-order and $(F,\prec)$ is an initial segment of $(E_T,\prec_T^+)$.
+\end{lemma}
+
+For $P\in L[z,x]$, recall that $\coeff(P)$ denotes its finite set of coefficients
+as a polynomial in two variables.
+
+If $F$ is a field and $\prec$ is a well-ordering of $F$, we define $\prec_x$ to be the lexicographic well-ordering of $F[x]$ induced by $\prec$: to compare two distinct polynomials $p$ and $q$ in $F[x]$, first compare their degrees, and if they are equal, compare their dominant coefficients using $\prec$, and then continue comparing the coefficients of lower degree terms in decreasing order of degree until a difference is found.
+Here we take $\deg(0)=-\infty$ and omitted coefficients to be zero.
+That is, if $p(x)=\sum_{i=0}^n a_ix^i$ and $q(x)=\sum_{i=0}^m b_ix^i$, and $p\neq q$, let $\Delta(p,q)=\max\{i\in\omega:a_i\neq b_i\}$.
+Then
+\begin{align*}
+    p\prec_x q\quad\Longleftrightarrow\quad
+    \begin{cases}
+        \deg(p)<\deg(q),\\
+        \text{or } \deg(p)=\deg(q) \text{ and } a_n\prec b_n, \text{ where } n=\Delta(p,q).
+    \end{cases}
+\end{align*}
+
+\begin{lemma}\label{lem:adjoin}
+Let $L/F$ be a normal separable algebraic extension, let $\prec$ be a
+well-ordering of $F$ and let $\Ccal$ be a finite nonempty collection of
+$F$-bases of $L$. Write
+\[
+ F^+=F\left(\bigcup_{E\in\Ecal(L,F)}\coeff(P_{\Ccal,E})\right).
+\]
+From these objects one can define a well-ordering of $F^+$ that has
+$(F,\prec)$ as an initial segment.
+
+More specifically, let
+\begin{itemize}
+    \item $\mathscr P_F=\{p\in F[x]:p\text{ is monic and splits into distinct linear factors in }L[x]\}\cup\{1\}$,
+    \item $E_p=F(\{u\in L:p(u)=0\})$ for $p\in\mathscr P_F$,
+    \item $c_{p,i,j}$ is the coefficient of $z^ix^j$ in $P_{\Ccal,E_p}(z,x)$ for
+    $(p,i,j)\in\mathscr P_F\times\omega\times\omega$,
+    \item $D=\mathscr P_F\times\omega\times\omega$
+    is equipped with the lexicographic well-ordering $<_D$ induced by
+    $\prec_x$ and the usual well-ordering of $\omega$,
+    \item $\mathbf c=(c_{p,i,j})_{(p,i,j)\in D}$, and
+    \item $T=(L,F,\prec,D,<_D,\mathbf c)$.
+\end{itemize}
+Then $T$ is an extension tuple, $E_T=F^+$, and
+$\prec_T^+$ is a well-ordering of $F^+$ having
+$(F,\prec)$ as an initial segment.
+\end{lemma}
+
+\begin{proof}
+First, we show that $\Ecal(L,F)=\{E_p:p\in\mathscr P_F\}$.
+
+For each $p\in\mathscr P_F$, the field $E_p$ is the splitting field of
+$p$ over $F$. By Lemma~\ref{lem:splitting-normal}, $E_p/F$ is finite
+and normal. It is also separable, since $E_p\subseteq L$. Thus
+$E_p\in\Ecal(L,F)$.
+
+Conversely, let $E\in\Ecal(L,F)$. By
+Lemma~\ref{lem:splitting-normal}, $E$ is the splitting field of some
+nonzero $q\in F[x]$. When $q$ is
+constant, we have $p=1$ and $E=F$.
+Otherwise, let $q_0,\ldots,q_{r-1}$ be its distinct monic
+irreducible factors and put $p=\prod_{i<r}q_i$. Each $q_i$ splits in
+$E$ by normality, and its roots are all distinct since they belong to the separable
+extension $E/F$. Distinct $q_i$'s have no common root as they are irreducible and monic, so
+$p\in\mathscr P_F$. The polynomials $p$ and $q$ have the same roots,
+and these roots generate $E$ over $F$. Hence $E=E_p$.
+
+Now let $S=\bigcup_{E\in\Ecal(L,F)}\coeff(P_{\Ccal,E})$.
+It follows that $S\cup\{0\}=\{c_{p,i,j}:(p,i,j)\in D\}$, so $F^+=F(S)=F(\mathbf c)$, so that $E_T=F^+$.
+By Lemma~\ref{lem:orderExtension},
+$\prec_T^+$ is a well-ordering of $E_T=F^+$ having
+$(F,\prec)$ as an initial segment.
+\end{proof}
+
+The following theorem is the first result in the paper that uses $\MC$.
+
+Under the stated hypotheses, it extends a given well-ordering of a field $K$ to a normal separable algebraic extension $L/K$.
+The idea is to recursively construct an increasing chain of well-ordered intermediate fields, starting with $K$ and applying Lemma~\ref{lem:adjoin} at each successor stage in an attempt to reach an intermediate field satisfying the hypotheses of Lemma~\ref{lem:finite-bases}
+The Hartogs number $h(\Pow(L))$ guarantees that this chain eventually stabilizes.
+When the chain finally stabilizes, Lemma~\ref{lem:finite-bases} shows that the remaining extension has finite degree, so a final application of Lemma~\ref{lem:orderExtension} yields the desired well-ordering of \(L\).
+
+\begin{theorem}\label{thm:algebraic}
+Assume $\MC$. Let $L/K$ be a normal separable algebraic extension.
+Assume that $\prec$ is a well-ordering of $K$ and that, for every well-orderable
+field $F$ with $K\subseteq F\subseteq L$, the $F$-vector space $L$ has a basis.
+Then $L$ is well-orderable by a well-ordering in which $(K, \prec)$ is an initial segment.
+\end{theorem}
+
+\begin{proof}
+Let $\mathscr S=\{F:K\subseteq F\subseteq L,
+                 \ F\text{ is a well-orderable subfield of }L\}$.
+
+For each $F\in\mathscr S$, let $\Bas_F(L)=\{B\subseteq L:B\text{ is an }F\text{-basis of }L\}$.
+By hypothesis, $\Bas_F(L)$ is nonempty for each $F\in\mathscr S$.
+By $\MC$, there exists $(\Ccal_F)_{F\in\mathscr S}$ such that $\varnothing\ne\Ccal_F\subseteq\Bas_F(L)$ and $\Ccal_F$ is finite for each $F\in\mathscr S$.
+
+
+Let $\kappa=h(\Pow(L))$, the Hartogs number of $\Pow(L)$.
+We may assume that $L$ is infinite (otherwise the theorem is trivial), so $\kappa$ is an infinite cardinal.
+Recursively define $(F_\alpha,\prec_\alpha)$ for $\alpha<\kappa$, where $F_\alpha$ is a subfield of $L$ well-ordered by $\prec_\alpha$, along with extension tuples $(T_\alpha)_{\alpha<\kappa}$, families $(D_\alpha)_{\alpha<\kappa}$, well-orderings $(<_\alpha)_{\alpha<\kappa}$ of $D_\alpha$, and families $(\mathbf c_\alpha)_{\alpha<\kappa}$ in $L$ such that, for every $\alpha<\kappa$,
+\begin{enumerate}
+    \item $(F_0,\prec_0)=(K,\prec)$,
+    \item $T_\alpha=(L,F_\alpha,\prec_\alpha,D_\alpha,<_\alpha,\mathbf c_\alpha)$,
+    \item $D_\alpha=\mathscr P_{F_\alpha}\times\omega\times\omega$,
+    \item $<_\alpha$ is the lexicographic well-ordering of $D_\alpha$ induced by $\prec_{\alpha,x}$ and the usual well-ordering of $\omega$,
+    \item $\mathbf c_\alpha=(c_{p,i,j})_{(p,i,j)\in D_\alpha}$, where $c_{p,i,j}$ is the coefficient of $z^ix^j$ in $P_{\Ccal_{F_\alpha},E_p}$ for $(p,i,j)\in D_\alpha$, and $E_p=F_\alpha(\{u\in L:p(u)=0\})$ for $p\in\mathscr P_{F_\alpha}$.
+    \item $F_{\alpha+1}=E_{T_\alpha}=F_\alpha\left(\bigcup_{E\in\Ecal(L,F_\alpha)}\coeff(P_{\Ccal_{F_\alpha},E})\right)$,
+    \item $\prec_{\alpha+1}=\prec_{T_\alpha}^+$.
+    \item $(F_\beta,\prec_\beta)$ is an initial segment of $(F_{\alpha},\prec_{\alpha})$ for every $\beta<\alpha$.
+    \item $F_\alpha=\bigcup_{\beta<\alpha}F_\beta$ and $\prec_\alpha=\bigcup_{\beta<\alpha}\prec_\beta$ for limit ordinals $\alpha<\kappa$.
+\end{enumerate}
+At each successor stage, $L/F_\alpha$ is again a normal separable
+algebraic extension, since the minimal polynomial over $F_\alpha$ of
+an element of $L$ divides its minimal polynomial over $K$. Thus
+Lemma~\ref{lem:adjoin} applies. At a limit stage, the union of the
+preceding fields is a field, and the union of their well-orderings is
+a well-ordering because they form an increasing chain of initial
+segments. Hence the recursion can be carried out as specified.
+
+For every $\beta<\alpha<\kappa$, we have $F_\beta\subseteq F_\alpha$.
+Assume by contradiction that for every $\alpha<\kappa$ we have $F_{\alpha+1}\ne F_\alpha$.
+Then $(F_\alpha)_{\alpha<\kappa}$ is a strictly increasing chain of subfields of $L$ of length $\kappa$, thus, an injection of $\kappa$ into $\Pow(L)$, contrary to the definition of $\kappa$.
+
+Let $\alpha$ be the first ordinal such that $F_{\alpha+1}=F_\alpha$, and write $F=F_\alpha$.
+Then, by the definition of $F_{\alpha+1}$, all the coefficients of
+$P_{\Ccal_F,E}$ lie in $F$ for every $E\in\Ecal(L,F)$.
+Lemma~\ref{lem:finite-bases} then implies $[L:F]<\omega$.
+
+The field $F$ is well-ordered by $\prec_\alpha$.
+Take a finite basis $\mathbf b=(b_i)_{i<m}$ of $L/F$, and let
+$D$ be a copy of $m$ disjoint from $\Symbols$ with its usual order $<_D$. Then $T=(L,F,\prec_\alpha,D,<_D,\mathbf b)$ is an
+extension tuple with $E_T=L$. Lemma~\ref{lem:orderExtension} shows
+that $\prec_T^+$ has $(F_\alpha,\prec_\alpha)$ as an
+initial segment. Since $(K,\prec)$ is an initial segment of
+$(F_\alpha,\prec_\alpha)$, it is also an initial segment of this
+well-ordering of $L$.
+\end{proof}
