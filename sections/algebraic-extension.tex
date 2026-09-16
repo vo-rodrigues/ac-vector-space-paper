@@ -1,6 +1,6 @@
 \section{Well-ordering an algebraic extension}\label{sec:extension}
 
-In this section, we work in $\ZFm$, besides in Theorem~\ref{thm:algebraic}, where we also assume $\MC$.
+In this section, we work in $\ZFm$, except in Theorem~\ref{thm:algebraic}, where we also assume $\MC$.
 
 The main goal of this section is to prove Theorem~\ref{thm:algebraic}, which shows that, assuming $\MC$ and given a field extension $L/K$ that is normal, separable and algebraic, if certain intermediate extensions of $L/K$ have bases and if $K$ is well-orderable, then this well-ordering can be extended to a well-ordering of $L$.
 The idea of the proof is to recursively define a well-ordering of an increasing chain of subfields of $L$ starting with $K$ and ending with $L$.
@@ -216,7 +216,7 @@ $(F,\prec)$ as an initial segment.
 The following theorem is the first result in the paper that uses $\MC$.
 
 Under the stated hypotheses, it extends a given well-ordering of a field $K$ to a normal separable algebraic extension $L/K$.
-The idea is to recursively construct an increasing chain of well-ordered intermediate fields, starting with $K$ and applying Lemma~\ref{lem:adjoin} at each successor stage in an attempt to reach an intermediate field satisfying the hypotheses of Lemma~\ref{lem:finite-bases}
+The idea is to recursively construct an increasing chain of well-ordered intermediate fields, starting with $K$ and applying Lemma~\ref{lem:adjoin} at each successor stage in an attempt to reach an intermediate field satisfying the hypotheses of Lemma~\ref{lem:finite-bases}.
 The Hartogs number $h(\Pow(L))$ guarantees that this chain eventually stabilizes.
 When the chain finally stabilizes, Lemma~\ref{lem:finite-bases} shows that the remaining extension has finite degree, so a final application of Lemma~\ref{lem:orderExtension} yields the desired well-ordering of \(L\).
 
@@ -259,8 +259,8 @@ a well-ordering because they form an increasing chain of initial
 segments. Hence the recursion can be carried out as specified.
 
 For every $\beta<\alpha<\kappa$, we have $F_\beta\subseteq F_\alpha$.
-Assume by contradiction that for every $\alpha<\kappa$ we have $F_{\alpha+1}\ne F_\alpha$.
-Then $(F_\alpha)_{\alpha<\kappa}$ is a strictly increasing chain of subfields of $L$ of length $\kappa$, thus, an injection of $\kappa$ into $\Pow(L)$, contrary to the definition of $\kappa$.
+Suppose for a contradiction that for every $\alpha<\kappa$ we have $F_{\alpha+1}\ne F_\alpha$.
+Then $(F_\alpha)_{\alpha<\kappa}$ is a strictly increasing chain of subfields of $L$ of length $\kappa$, yielding an injection of $\kappa$ into $\Pow(L)$, contrary to the definition of $\kappa$.
 
 Let $\alpha$ be the first ordinal such that $F_{\alpha+1}=F_\alpha$, and write $F=F_\alpha$.
 Then, by the definition of $F_{\alpha+1}$, all the coefficients of

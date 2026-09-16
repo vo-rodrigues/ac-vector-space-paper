@@ -25,7 +25,7 @@ Let $E/F$ be a field extension and let $a \in E$.
 We say that $a$ is \emph{algebraic} over $F$ if there exists a nonzero polynomial $p \in F[x]$ such that $p(a) = 0$.
 In that case, the minimal polynomial of $a$ over $F$ is the unique monic irreducible polynomial $p \in F[x]$ such that $p(a) = 0$.
 From basic field theory, it follows that $[F(a):F]=d$, where $d$ is the degree of $p$, and that $\{a^i:i<d\}$ is a basis of $F(a)$ over $F$.
-In particular, every element of $F(a)$ writes uniquely as $\sum_{i<d}c_i a^i$ for some $(c_i:i<d)\in F^d$.
+In particular, every element of $F(a)$ can be written uniquely as $\sum_{i<d}c_i a^i$ for some $(c_i:i<d)\in F^d$.
 
 A field extension $E/F$ is \emph{algebraic} if every element of $E$ is algebraic over $F$.
 Every finite extension is algebraic.
@@ -94,8 +94,9 @@ We will use $\overline{\mathrm{ev}}_a$ below to define an inverse mapping of $f$
 
 Fix a root $b\in E$ of $\tau(p)$ and define the ring homomorphism
 $g_b:K[x]\to E$ by $g_b(q)=\tau(q)(b)$.
-The kernel of $g_b$ is $(p)$, which is maximal since $p$ is irreducible,
-and is proper since $g_b(1)=1\neq 0$. Thus $\ker g_b=(p)$, and there is
+Since $b$ is a root of $\tau(p)$, we have $(p)\subseteq\ker g_b$.
+As $p$ is irreducible, $(p)$ is maximal; moreover, $\ker g_b$ is
+proper because $g_b(1)=1\neq 0$. Hence $\ker g_b=(p)$, and there is
 a unique embedding $\bar g_b:K[x]/(p)\to E$ such that
 $\bar g_b\circ\pi=g_b$. Define
 \[
@@ -113,7 +114,8 @@ Define $g:\{b\in E:\tau(p)(b)=0\}\to\Emb_{\tau}(H,E)$ by $g(b)=\sigma_b$.
 Now, notice that given $b \in \{b\in E:\tau(p)(b)=0\}$, we have $f(g(b))=f(\sigma_b)=\sigma_b(a)=b$.
 Conversely, given $\sigma \in \Emb_{\tau}(H,E)$, we have
 $g(f(\sigma))=g(\sigma(a))=\sigma_{\sigma(a)}$,
-since $\sigma_{\sigma(a)}$ and $\sigma$ are homomorphisms defined on $H=K(a)$ that agree on $K$ and $a$, it follows that $g(f(\sigma ))= \sigma_{\sigma(a)}=\sigma$.
+and $\sigma_{\sigma(a)}=\sigma$, since these homomorphisms agree on $K$ and $a$.
+Thus $g(f(\sigma))=\sigma$.
 \end{proof}
 
 \begin{lemma}\label{lem:count-embeddings}
@@ -205,7 +207,7 @@ Put $G=\Gal(E/F)$ and $S=\Gal(E/H)$. For $\sigma,\tau\in G$,
 \[
  \sigma(\vec a)=\tau(\vec a)
  \iff \tau^{-1}\sigma\in S
- \iff \sigma S=\tau S,
+ \iff \sigma S=\tau S.
 \]
 Indeed, the first equivalence holds because $\tau^{-1}\sigma$ fixes
 every entry of $\vec a$ exactly when it fixes $H=F(\vec a)$; the second
@@ -338,5 +340,6 @@ Let $E/F$ be a normal algebraic extension, and assume that $F$ has characteristi
        p'(x)=m_j(x-a_j)^{m_j-1}q(x)+(x-a_j)^{m_j}q'(x).
        \]
        Hence $(x-a_j)^{m_j-1}$ divides $p'(x)$, and therefore $p'(a_j)=0$.
-       Since $m_j>1$ and $F$ has characteristic zero, $1\leq\deg p'=\deg p-1<\deg p$, contradicting the minimality of $p$.
+       Since $p$ is irreducible over $F$ and $p(a_j)=0$, it is also the minimal polynomial of $a_j$ over $F$.
+       Moreover, as $m_j>1$ and $F$ has characteristic zero, $1\leq\deg p'=\deg p-1<\deg p$, contradicting its minimality.
 \end{proof}
