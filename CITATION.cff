@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "Please cite the manuscript using the preferred citation below."
-title: "Eliminating Foundation from the equivalence between the existence of bases and the axiom of choice"
+title: "Existence of bases implies the axiom of choice, a foundation free proof"
 authors:
   - family-names: Fernandes
     given-names: Gabriel
@@ -13,7 +13,7 @@ url: "https://github.com/vo-rodrigues/ac-vector-space-paper"
 repository-code: "https://github.com/vo-rodrigues/ac-vector-space-paper"
 preferred-citation:
   type: unpublished
-  title: "Eliminating Foundation from the equivalence between the existence of bases and the axiom of choice"
+  title: "Existence of bases implies the axiom of choice, a foundation free proof"
   authors:
     - family-names: Fernandes
       given-names: Gabriel

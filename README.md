@@ -1,4 +1,4 @@
-# Eliminating Foundation from the equivalence between the existence of bases and the axiom of choice
+# Existence of bases implies the axiom of choice, a foundation free proof
 
 Gabriel Fernandes · Renan Maneli Mezabarba · Vinicius de Oliveira Rodrigues
 
@@ -12,7 +12,7 @@ Gabriel Fernandes · Renan Maneli Mezabarba · Vinicius de Oliveira Rodrigues
 
 ## About the manuscript
 
-This repository contains the LaTeX sources of *Eliminating Foundation from the equivalence between the existence of bases and the axiom of choice*.
+This repository contains the LaTeX sources of *Existence of bases implies the axiom of choice, a foundation free proof*.
 We prove that, in Zermelo--Fraenkel set theory with the axiom of
 Foundation removed, the statement that every vector space has a basis implies the Axiom of Choice, concluding that the classical equivalence between $\AC$ and the existence of bases does not require the Axiom of Foundation.
 More specifically, we prove that if every vector space over a field of characteristic zero has a basis, then $\AC$ holds. This result extends to set theory with atoms.
@@ -22,7 +22,7 @@ More specifically, we prove that if every vector space over a field of character
 Until an arXiv identifier is available, cite this manuscript as:
 
 > Gabriel Fernandes, Renan Maneli Mezabarba, and Vinicius de Oliveira Rodrigues.
-> *Eliminating Foundation from the equivalence between the existence of bases and the axiom of choice*. Unpublished
+> *Existence of bases implies the axiom of choice, a foundation free proof*. Unpublished
 > manuscript, 2026.
 
 ## Declaration of AI assistance
