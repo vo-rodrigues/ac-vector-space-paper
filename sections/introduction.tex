@@ -12,28 +12,35 @@ For vector spaces over arbitrary fields, one of the earliest
 recorded proofs, due to Zorn, appears in 1935~\cite{Zorn1935} in his
 treatment of what is modernly known as Zorn's lemma.
 
-Whether the existence of bases really depended on the
-Axiom of Choice or whether it could be proved in the Zermelo--Fraenkel set theory $\ZF$ became a more complicated question.
-In 1962, L\"auchli~\cite{Lauchli1962} constructed permutation models with self-singletons $x=\{x\}$ containing a vector space with no basis, and others
-containing a vector space with bases of different cardinalities.
-However, in these models, both the Axiom of Choice and
-the Axiom of Foundation fail.
-This established the independence of the existence of bases from
-$\ZFm$, the Zermelo--Fraenkel set theory with the Axiom of Foundation omitted.
+Thus, $\AC$ implies that every vector space has a basis. Whether the
+existence of bases really depended on the Axiom of Choice or whether it
+could be proved in the Zermelo--Fraenkel set theory $\ZF$ became a more
+complicated question.
 
-Later, Bleicher~\cite{Bleicher1964} derived the axiom of multiple
-choice $\MC$ from the assertion that every linearly independent set extends
-to a basis.
-In $\ZF$, $\MC$ is equivalent to $\AC$~\cite{FelgnerJech1973}.
-Foundation is essential for this equivalence: L\'evy's permutation-model
-construction establishes the relative consistency of $\MC+\neg\AC$
-with $\ZFm$~\cite{Levy1962}. Later Halpern~\cite{Halpern1966} proved in $\ZFm$
-that $\AC$ follows if every generating
-set of every vector space contains a basis.
+In 1962, L\"auchli~\cite{Lauchli1962} constructed permutation models
+with self-singletons $x=\{x\}$ containing a vector space with no basis,
+and other such models containing a vector space with bases of different
+cardinalities. Since both Choice and Foundation fail in these models,
+his constructions established the independence of the existence of
+bases from $\ZFm$, but did not determine the precise choice principle
+implied by the assertion that every vector space has a basis.
 
-Finally, Blass settled the converse in $\ZF$ in 1984~\cite{Blass}.
-He derived $\MC$ from the existence of bases in $\ZFm$.
-Thus, in $\ZF$, the existence of bases is equivalent to $\AC$.
+Some progress was first obtained for stronger assertions about bases.
+Working in $\ZF$, Bleicher~\cite{Bleicher1964} derived the axiom of
+multiple choice $\MC$ from the assertion that every linearly independent
+set extends to a basis. Since $\MC$ is equivalent to $\AC$ in
+$\ZF$~\cite{FelgnerJech1973}, this extension principle implies $\AC$.
+The equivalence between $\MC$ and $\AC$ uses Foundation: L\'evy's
+permutation-model construction establishes the relative consistency of
+$\MC+\neg\AC$ with $\ZFm$~\cite{Levy1962}. Halpern~\cite{Halpern1966}
+later proved directly in $\ZFm$ that $\AC$ follows from another stronger
+assertion, namely that every generating set of every vector space
+contains a basis. Neither result, however, settled the question for the
+weaker assertion that every vector space has some basis.
+
+Blass made the decisive advance in 1984~\cite{Blass}. Working in
+$\ZFm$, he showed that the existence of bases for all vector spaces
+implies $\MC$.
 
 \begin{theorem}[Blass {\cite{Blass}}]\label{thm:blass}
 In $\ZFm$, if every vector space over a field of characteristic zero has a basis, then $\MC$ holds.
@@ -43,12 +50,18 @@ Thus,
 \]
 \end{theorem}
 
-The restriction to fields of characteristic zero is not stated in Blass's article, but it follows from the presented proof.
+The restriction to fields of characteristic zero is not stated in
+Blass's article, but it follows from the proof given there.
 
-However, the question whether the existence of bases implies $\AC$ in
-$\ZFm$ remained open~\cites[p.~33]{Blass}{Karagila2017MO}[p.~423]{Morillon}[p.~121]{Philip2025}.
+Blass's theorem settles the converse in $\ZF$ because, as observed
+above, $\MC$ implies $\AC$ in $\ZF$. Without Foundation, it yields only
+$\MC$. The remaining question was therefore whether, in $\ZFm$, the
+existence of bases implies $\AC$
+itself~\cites[p.~33]{Blass}{Karagila2017MO}[p.~423]{Morillon}[p.~121]{Philip2025}.
 
-The apparent role of Foundation in this problem is particularly striking.
+The apparent role of Foundation in this problem is particularly striking,
+since Foundation is usually regarded as having little bearing on ordinary
+mathematics.
 Jech writes that this axiom is ``irrelevant for the development of ordinal
 and cardinal numbers, natural and real numbers, and in fact of all ordinary
 mathematics'' while emphasizing its usefulness in the metamathematics
