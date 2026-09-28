@@ -45,16 +45,8 @@ $\sigma[B_i\cap E]$, and the set of roots of $q_{B_j,E}$
 is $B_j\cap E$.
 \end{proof}
 
-\begin{lemma}\label{lem:finite-bases}
-Let $L/F$ be a normal separable algebraic extension and let $\Ccal$
-be a finite nonempty family of $F$-bases of $L$. Suppose that, for every $E\in\Ecal(L,F)$,
-\begin{equation*}
- P_{\Ccal,E}(z,x)\in F[z,x].
-\end{equation*}
-Then $L/F$ is finite.
-\end{lemma}
-
-\begin{proof}
+\setcounter{claim}{0}
+\begin{proof}[Proof of Theorem~\ref{lem:finite-bases}]
 Let $m=|\Ccal|$ and fix $B_*\in\Ccal$.
 
 By Lemma~\ref{lem:basis-polynomials}, for every $E\in\Ecal(L,F)$ and
@@ -122,10 +114,7 @@ S=\bigcup_{E\in\Ecal(L,F)}\coeff(q_{B_*,E}),\qquad
 \begin{proof}[Proof of Claim]
 Let $d_1,\ldots,d_{m+1}\in D=F(S)$.
 There exists a finite subset $S'\subseteq S$
-such that
-\[
-       d_1,\ldots,d_{m+1}\in F(S').
-\]
+such that $d_1,\ldots,d_{m+1}\in F(S')$.
 
 Choose
 $E_1,\ldots,E_r\in\Ecal(L,F)$ so that $S'\subseteq\bigcup_{i=1}^r\coeff(q_{B_*,E_i})$.
@@ -135,7 +124,11 @@ Let $\vec a$ be a tuple listing all the nonzero coefficients of the polynomials 
 Then $d_1,\ldots,d_{m+1}\in F(S')\subseteq F(\vec a)$ (as $0 \in F$).
 As $[F(\vec a):F]\le m$ by Claim~\ref{claim:coeff-degree}, we conclude that $(d_1,\ldots,d_{m+1})$ is not $F$-linearly independent.
 
-As $(d_1,\ldots,d_{m+1})$ was an arbitrary tuple of $m+1$ elements of $D$, we conclude that $[D:F]\le m$.
+Thus every $F$-linearly independent tuple in $D$ has length at most $m$.
+There is therefore a greatest possible length $r\le m$ of such a tuple.
+Fix a linearly independent tuple of length $r$. It spans $D$, since any
+element outside its span would extend it to a longer linearly independent
+tuple. Hence it is a finite basis of $D$ over $F$, and $[D:F]=r\le m$.
 \end{proof}
 For each $b\in B_*$, let $\mu_b(x)\in D[x]$ be its monic minimal polynomial over $D$.
 \begin{claim}\label{claim:roots-in-L}
@@ -152,13 +145,9 @@ Moreover, since $q_{B_*,E}$ splits into distinct linear factors in $L[x]$, so do
 \end{proof}
 
 Define in $B_*$ the equivalence relation $\sim$ given by
-\[
- b\sim c\quad\Longleftrightarrow\quad\mu_b=\mu_c.
-\]
+$b\sim c\Longleftrightarrow\mu_b=\mu_c$.
 For each $b\in B_*$, let $C_b$ be its equivalence class under $\sim$. We claim that
-\[
- C_b=\{c\in L:\mu_b(c)=0\}.
-\]
+$C_b=\{c\in L:\mu_b(c)=0\}$.
 Indeed, if $c\in C_b$, then $\mu_c=\mu_b$, so $\mu_b(c)=0$.
 Conversely, if $\mu_b(c)=0$, then $c\in B_*$ by
 Claim~\ref{claim:roots-in-L}. Moreover, $\mu_c$ divides $\mu_b$, and

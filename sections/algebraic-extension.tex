@@ -160,7 +160,7 @@ Then
     \end{cases}
 \end{align*}
 
-\begin{lemma}\label{lem:adjoin}
+\begin{proof}[Proof of Theorem~\ref{lem:adjoin}]
 Let $L/F$ be a normal separable algebraic extension, let $\prec$ be a
 well-ordering of $F$ and let $\Ccal$ be a finite nonempty collection of
 $F$-bases of $L$. Write
@@ -185,9 +185,7 @@ More specifically, let
 Then $T$ is an extension tuple, $E_T=F^+$, and
 $\prec_T^+$ is a well-ordering of $F^+$ having
 $(F,\prec)$ as an initial segment.
-\end{lemma}
 
-\begin{proof}
 First, we show that $\Ecal(L,F)=\{E_p:p\in\mathscr P_F\}$.
 
 For each $p\in\mathscr P_F$, the field $E_p$ is the splitting field of
@@ -211,23 +209,20 @@ It follows that $S\cup\{0\}=\{c_{p,i,j}:(p,i,j)\in D\}$, so $F^+=F(S)=F(\mathbf 
 By Lemma~\ref{lem:orderExtension},
 $\prec_T^+$ is a well-ordering of $E_T=F^+$ having
 $(F,\prec)$ as an initial segment.
+
+If $F^+=F$, then $P_{\Ccal,E}\in F[z,x]$ for every
+$E\in\Ecal(L,F)$. Theorem~\ref{lem:finite-bases} therefore gives
+$[L:F]<\omega$, as required.
 \end{proof}
 
-The following theorem is the first result in the paper that uses $\MC$.
+We now prove Theorem~\ref{thm:algebraic}, using $\MC$.
 
 Under the stated hypotheses, it extends a given well-ordering of a field $K$ to a normal separable algebraic extension $L/K$.
-The idea is to recursively construct an increasing chain of well-ordered intermediate fields, starting with $K$ and applying Lemma~\ref{lem:adjoin} at each successor stage in an attempt to reach an intermediate field satisfying the hypotheses of Lemma~\ref{lem:finite-bases}.
+The idea is to recursively construct an increasing chain of well-ordered intermediate fields, starting with $K$ and applying Theorem~\ref{lem:adjoin} at each successor stage in an attempt to reach an intermediate field satisfying the hypotheses of Theorem~\ref{lem:finite-bases}.
 The Hartogs number $h(\Pow(L))$ guarantees that this chain eventually stabilizes.
-When the chain finally stabilizes, Lemma~\ref{lem:finite-bases} shows that the remaining extension has finite degree, so a final application of Lemma~\ref{lem:orderExtension} yields the desired well-ordering of \(L\).
+When the chain finally stabilizes, Theorem~\ref{lem:finite-bases} shows that the remaining extension has finite degree, so a final application of Lemma~\ref{lem:orderExtension} yields the desired well-ordering of \(L\).
 
-\begin{theorem}\label{thm:algebraic}
-Assume $\MC$. Let $L/K$ be a normal separable algebraic extension.
-Assume that $\prec$ is a well-ordering of $K$ and that, for every well-orderable
-field $F$ with $K\subseteq F\subseteq L$, the $F$-vector space $L$ has a basis.
-Then $L$ is well-orderable by a well-ordering in which $(K, \prec)$ is an initial segment.
-\end{theorem}
-
-\begin{proof}
+\begin{proof}[Proof of Theorem~\ref{thm:algebraic}]
 Let $\mathscr S=\{F:K\subseteq F\subseteq L,
                  \ F\text{ is a well-orderable subfield of }L\}$.
 
@@ -253,7 +248,7 @@ Recursively define $(F_\alpha,\prec_\alpha)$ for $\alpha<\kappa$, where $F_\alph
 At each successor stage, $L/F_\alpha$ is again a normal separable
 algebraic extension, since the minimal polynomial over $F_\alpha$ of
 an element of $L$ divides its minimal polynomial over $K$. Thus
-Lemma~\ref{lem:adjoin} applies. At a limit stage, the union of the
+Theorem~\ref{lem:adjoin} applies. At a limit stage, the union of the
 preceding fields is a field, and the union of their well-orderings is
 a well-ordering because they form an increasing chain of initial
 segments. Hence the recursion can be carried out as specified.
@@ -265,7 +260,7 @@ Then $(F_\alpha)_{\alpha<\kappa}$ is a strictly increasing chain of subfields of
 Let $\alpha$ be the first ordinal such that $F_{\alpha+1}=F_\alpha$, and write $F=F_\alpha$.
 Then, by the definition of $F_{\alpha+1}$, all the coefficients of
 $P_{\Ccal_F,E}$ lie in $F$ for every $E\in\Ecal(L,F)$.
-Lemma~\ref{lem:finite-bases} then implies $[L:F]<\omega$.
+Theorem~\ref{lem:finite-bases} then implies $[L:F]<\omega$.
 
 The field $F$ is well-ordered by $\prec_\alpha$.
 Take a finite basis $\mathbf b=(b_i)_{i<m}$ of $L/F$, and let
