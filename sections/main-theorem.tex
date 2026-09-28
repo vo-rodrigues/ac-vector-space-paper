@@ -1,12 +1,6 @@
-\section{Proof of the main theorem}\label{sec:main-proof}
+\section{Embedding a set into a field extension}\label{sec:main-proof}
 
-\begin{proposition}\label{prop:embedding}
-Assume $\MC$. For every set $X$ there exist a well-orderable field $K$
-of characteristic zero, a normal separable algebraic extension $L/K$,
-and an injection $X\to L$.
-\end{proposition}
-
-\begin{proof}
+\begin{proof}[Proof of Theorem~\ref{prop:embedding}]
 For $X=\varnothing$, take $K=L=\Q$. Otherwise, by
 Lemma~\ref{lem:partition}, fix a partition $(X_\alpha)_{\alpha<\lambda}$ of $X$ into nonempty finite blocks, and put $n_\alpha=|X_\alpha|$.
 Let $\Q[t_x:x\in X]$ be the polynomial ring in distinct indeterminates $(t_x)_{x\in X}$ over $\Q$, and let $L$ be its field of fractions:
@@ -60,19 +54,7 @@ Explicitly:
 \end{itemize}
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:main}]
-By Theorem~\ref{thm:blass}, $\MC$ holds. Let $X$ be an
-arbitrary set. We will show that $X$ is well-orderable.
-
-By Proposition~\ref{prop:embedding}, there exist a well-orderable field $K$ of characteristic zero, a normal separable algebraic extension $L/K$, and an injection $X\to L$.
-Thus, it suffices to show that $L$ is well-orderable.
-
-For every well-orderable intermediate field $F$, the $F$-vector space
-$L$ has a basis by hypothesis.
-Thus, by Theorem~\ref{thm:algebraic}, $L$ is well-orderable and the proof is complete.
-\end{proof}
-
-With the same proof, we also have the following.
+The proof of Theorem~\ref{thm:main} in Section~\ref{sec:structure} also gives the following.
 
 \begin{corollary}\label{cor:restricted}
 In $\ZFm$, the following are equivalent:

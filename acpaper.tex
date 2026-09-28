@@ -38,13 +38,15 @@
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{overviewtheorem}{Theorem}
+\renewcommand{\theoverviewtheorem}{\Alph{overviewtheorem}}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
-\newtheorem{claim}{Claim}[theorem]
+\newtheorem{claim}{Claim}
 
 \title[Vector space bases without Foundation]
 {Existence of bases implies the axiom of choice, a foundation-free proof}
@@ -73,13 +75,14 @@ vector space bases, normal field extensions}
 
 \begin{abstract}
 We prove that, in Zermelo--Fraenkel set theory with the axiom of
-Foundation removed, the statement that every vector space has a basis implies the Axiom of Choice, concluding that the classical equivalence between $\AC$ and the existence of bases does not require the Axiom of Foundation.
-More specifically, we prove that if every vector space over a field of characteristic zero has a basis, then $\AC$ holds. This result extends to set theory with atoms.
+Foundation removed, the statement that every vector space has a basis implies the Axiom of Choice ($\AC$), concluding that the classical equivalence between $\AC$ and the existence of bases does not require regularity.
+This result extends to set theory with atoms.
 \end{abstract}
 
 \maketitle
 
 \input{sections/introduction}
+\input{sections/structure}
 \input{sections/preliminaries}
 \input{sections/galois-theory}
 \input{sections/finite-bases}
